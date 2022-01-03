@@ -1,7 +1,8 @@
 const body = document.querySelector("body");
 
 const btnOpen = document.getElementById("btn-open");
-const closeMenu = document.getElementById("btn-close");
+
+const closeMenu = document.querySelectorAll('[data-close="menu"]');
 
 if (btnOpen) {
 	btnOpen.addEventListener("click", (e) => {
@@ -12,9 +13,11 @@ if (btnOpen) {
 }
 
 if (closeMenu) {
-	closeMenu.addEventListener("click", (e) => {
-		e.preventDefault();
-		e.stopPropagation();
-		body.classList.remove("open-menu");
+	closeMenu.forEach((el) => {
+		el.addEventListener("click", (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+			body.classList.remove("open-menu");
+		});
 	});
 }
